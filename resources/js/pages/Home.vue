@@ -2,42 +2,31 @@
 
   .home-container
     home-featured
-    .wrapper(v-if="categories")
-      channel-row(v-for="category in categories" :channels="channels" :name="category" :key="category")
-    loading-indicator(v-else)
+    .wrapper
+      router-view.home-view(name="homeView")
+
 
 </template>
 
 <script>
     import HomeFeatured from "../components/HomeFeatured";
-    import ChannelRow from "../components/ChannelRow";
     import LoadingIndicator from "../components/LoadingIndicator";
+    import ChannelList from "./ChannelList";
 
     export default {
         name: "home",
-        created() {
-            this.getChannels();
-        },
-        methods: {
-            async getChannels() {
-                const response = await axios.get('http://tv.sawadland.com:3000/api/channels')
-                this.channels = response.data.channels;
-                const cats = this.channels.map(channel => channel.category);
-                this.categories = new Set(cats);
-            },
-        },
-        data() {
-            return {
-                categories: null,
-                channels: null,
-            }
-        },
-        components: {LoadingIndicator, 'home-featured': HomeFeatured, 'channel-row': ChannelRow}
+        components: {ChannelList, LoadingIndicator, HomeFeatured}
     }
 </script>
 
 <style scoped>
   .wrapper {
     padding: 50px;
+  }
+
+  @media screen and (max-width: 700px) {
+    .wrapper {
+      padding: 10px;
+    }
   }
 </style>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,27 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+  return $request->user();
 });
+
+Route::post('/user/login', function (Request $request) {
+  $email = $request->email;
+  $password = $request->password;
+
+  // check the token
+  if (!$token = auth()->attempt(['email' => $email, 'password' => $password])) {
+    return response()->json(['error' => 'Unauthorized'], 401);
+  }
+
+  $user = \App\User::where('email', $email)->first();
+
+  return response()->json(['token' => $user->api_token], 200);
+});
+
+
+Route::resource('/landing', 'LandingController');
+Route::resource('/promos', 'PromoController');
+Route::resource('/home_promo', 'HomePromoController');
+Route::resource('/channels', 'ChannelController');
+Route::resource('/categories', 'CategoryController');
+Route::get('/channels/category/{id}', 'CategoryController@getChannels');

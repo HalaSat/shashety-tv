@@ -68,7 +68,7 @@
 <style scoped>
 
   .loading-indicator-container {
-    padding: 23.6vh;
+    padding: 15.6vh;
   }
 
   .loading-indicator {

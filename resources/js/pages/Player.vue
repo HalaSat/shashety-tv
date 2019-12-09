@@ -1,14 +1,20 @@
 <template lang="pug">
   .player-page
     .navbar
-      router-link(to="/home")
+      router-link(to="/home/live-tv")
         img.logo(src="/images/logo.png")
     .channel-container
       .player-container
         #player
-      .player-channel-row-title All
-      .player-channel-row(:v-if="channels")
-        channel-card(v-for="channel in channels" :channel="channel" :key="channel._id")
+    .wrapper
+      ChannelRow(v-if="channels && channel" :name="channel.category" :channels="channels")
+    // .tabs
+    //  router-link(:to="relatedChannelsRoute")
+    //    .tab.downloads(:class="{highlighted: !isHighlighted}") Related
+    //  router-link(:to="allChannelsRoute")
+    //    .tab.live-tv(:class='{highlighted: isHighlighted}') All
+
+    //router-view.playerView
 
 </template>
 
@@ -16,15 +22,18 @@
 
     import axios from 'axios';
     import ChannelCard from "../components/ChannelCard";
+    import ChannelList from "./ChannelList";
+    import ChannelRow from "../components/ChannelRow";
 
     export default {
         name: "player",
-        components: {ChannelCard},
+        components: {ChannelRow, ChannelList, ChannelCard},
         data() {
-            return {channel: null, channels: null, player: null};
+            return {channel: null, channels: null, player: null, isHighlighted: true};
         },
         watch: {
             $route (toRoute, fromRoute) {
+                this.isHighlighted = toRoute.name === 'channels';
                 this.player.destroy();
                 this.getChannel();
             }
@@ -33,6 +42,9 @@
             getChannel() {
                 axios.get(`http://tv.sawadland.com:3000/api/channels/${this.$route.params.id}`).then(response => {
                     this.channel = response.data.channel;
+                    if (this.player) {
+                        this.player.destroy();
+                    }
                     this.player = new Clappr.Player({
                         source: this.channel.url,
                         parentId: "#player",
@@ -50,14 +62,38 @@
             },
         },
         mounted() {
+            this.isHighlighted = this.$route.name === 'channels';
             this.getChannel();
             this.getChannels();
         },
+        computed: {
+            relatedChannelsRoute() {
+                return `/channel/${this.$route.params.id}/related`;
+            },
+
+            allChannelsRoute() {
+                return `/channel/${this.$route.params.id}/all`;
+            }
+        },
+
+        destroyed() {
+            this.player.destroy();
+        }
 
     }
 </script>
 
 <style lang="scss" scoped>
+  .wrapper {
+    padding: 50px;
+  }
+
+  @media screen and (max-width: 700px) {
+    .wrapper {
+      padding: 10px;
+    }
+  }
+
   .navbar {
     padding: 50px;
   }
@@ -100,6 +136,23 @@
     font-weight: bold;
     margin-bottom: 10px;
     margin-left: 10px;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    cursor: pointer;
+    font-family: "Dubai-Light", sans-serif;
+    .tab {
+      margin: 10px;
+      padding: 2px;
+    }
+
+    .highlighted {
+      font-family: "Dubai-Regular", sans-serif;
+      border-bottom: 1px solid red;
+    }
   }
 
 

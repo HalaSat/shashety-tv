@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Landing from "./pages/Landing";
 import Downloads from "./pages/Downloads";
 import Player from "./pages/Player";
+import ChannelList from "./pages/ChannelList";
+import RelatedList from "./components/RelatedList";
 
 Vue.use(VueRouter);
 
@@ -19,17 +21,47 @@ const router = new VueRouter({
     {
       path: "/home",
       name: "home",
-      component: Home
+      component: Home,
+      children: [
+        {
+          name: 'live-tv',
+          path: "live-tv",
+          components: {
+            homeView: ChannelList
+          },
+        },
+        {
+          name: "downloads",
+          path: 'downloads',
+          components: {
+            homeView: Downloads
+          },
+
+        }
+
+      ]
     },
-    {
-      path: "/downloads",
-      name: "downloads",
-      component: Downloads
-    },
+
     {
       path: "/channel/:id",
       name: "player",
-      component: Player
+      component: Player,
+      children: [
+        {
+          name: 'channels',
+          path: 'all',
+          components: {
+            playerView: ChannelList
+          }
+        },
+        {
+          name: 'related',
+          path: 'related',
+          components: {
+            playerView: RelatedList
+          }
+        }
+      ]
     }
   ]
 });

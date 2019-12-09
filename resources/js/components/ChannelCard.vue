@@ -25,9 +25,9 @@
 
   .channel-img {
     margin-right: 10px;
-    margin-bottom: 10px;
-    height: 160px;
-    width: 160px;
+    /*margin-bottom: 10px;*/
+    height: 12.5vw;
+    width: 12.5vw;
     object-fit: cover;
     /*border-radius: 10px;*/
     /*box-shadow: 0 0 0 2px silver;*/
@@ -39,4 +39,10 @@
     }
   }
 
+  @media screen and (max-width: 700px) {
+    .channel-img {
+      width: 28vw;
+      height: 28vw;
+    }
+  }
 </style>

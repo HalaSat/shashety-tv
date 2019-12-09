@@ -1,6 +1,5 @@
 <template lang="pug">
   .channel-row-wrapper
-    .title {{ name }}
     .channel-row(:class="collapsed ? 'collapse' : ''" v-if="channels")
       channel-card(v-for="channel in data" :channel="channel" :key="channel.id")
     .see-more(v-on:click="collapse")
@@ -14,23 +13,27 @@
     import DownArrow from "./DownArrow";
 
     export default {
-        name: "channel-row",
+        name: "related-list",
         data() {
+            console.log('this is data');
             return {
                 collapsed: true,
                 data:  this.channels.filter(channel => channel.category === this.name)
             };
         },
         props: {
-            'channels': {type: Array},
-            'name': {type: String, default: 'Featured'}
+            channelId: {type: String}
         },
-        components: {DownArrow, 'channel-card': ChannelCard},
+        components: {DownArrow, ChannelCard},
         methods: {
             collapse() {
                 this.collapsed = !this.collapsed;
             },
 
+        },
+        mounted() {
+            console.log('this is data');
+            console.log(this.$route.params);
         }
     }
 </script>

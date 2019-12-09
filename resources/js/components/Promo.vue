@@ -4,7 +4,7 @@
       .promo-text
         div(class="headline font-dubai-medium") A Unique Way to Enjoy
         div(class="no-margin subtitle font-dubai-light") More Than 200 Live Channels
-        router-link(to="/home")
+        router-link(to="/home/live-tv")
           .play-row
             play-button
             div(class="get-started subtitle font-dubai-light") Get Started

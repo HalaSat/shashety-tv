@@ -3,7 +3,8 @@
     a.logo
       img(src="images/logo.png")
     .expanded
-
+    .left
+      router-link.button.downloads(to="/home/downloads") Downloads
 
       //a(href="#") English
       //.divider
@@ -73,9 +74,9 @@
     box-shadow: 0 0 0 2px;
   }
 
-  @media screen and(max-width: 700px) {
-    .downloads {
-      display: none;
-    }
-  }
+  /*@media screen and(max-width: 700px) {*/
+  /*  .downloads {*/
+  /*    display: none;*/
+  /*  }*/
+  /*}*/
 </style>

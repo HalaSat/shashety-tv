@@ -15,7 +15,43 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-  return $request->user();
+  return response()->json([
+    "code" => 20000, "data" => [
+      "roles" => ["admin"],
+      "introduction" => "I am a super administrator",
+      "avatar" => "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+      "name" => $request->user()->name
+    ]
+  ]);
+  // return $request->user();
+});
+
+Route::get('/landing', 'LandingController@index');
+Route::get('/channels/category/{category}', 'CategoryController@getChannels');
+Route::get('/promos', 'PromoController@index');
+Route::get('/channels', 'ChannelController@index');
+Route::get('/channels/{channel}', 'ChannelController@show');
+Route::post('/files', 'FileController@uploadFile');
+Route::get('/categories', 'CategoryController@index');
+Route::get('/categories/{category}', 'CategoryController@show');
+Route::get('/home_promo', 'HomePromoController@index');
+
+Route::middleware('auth:api')->group(function () {
+  Route::post('/landing', 'LandingController@store');
+
+  Route::post('/promos', 'PromoController@store');
+  Route::patch('/promos/{promo}', 'PromoController@update');
+  Route::delete('/promos/{promo}', 'PromoController@destroy');
+
+  Route::post('/home_promo', 'HomePromoController@store');
+
+  Route::post('/channels', 'ChannelController@store');
+  Route::patch('/channels/{channel}', 'ChannelController@update');
+  Route::delete('/channels/{channel}', 'ChannelController@destroy');
+
+  Route::patch('/categories/{category}', 'CategoryController@update');
+  Route::post('/categories', 'CategoryController@store');
+  Route::delete('/categories/{category}', 'CategoryController@destroy');
 });
 
 Route::post('/user/login', function (Request $request) {
@@ -31,11 +67,3 @@ Route::post('/user/login', function (Request $request) {
 
   return response()->json(['token' => $user->api_token], 200);
 });
-
-
-Route::resource('/landing', 'LandingController');
-Route::resource('/promos', 'PromoController');
-Route::resource('/home_promo', 'HomePromoController');
-Route::resource('/channels', 'ChannelController');
-Route::resource('/categories', 'CategoryController');
-Route::get('/channels/category/{id}', 'CategoryController@getChannels');

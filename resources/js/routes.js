@@ -7,6 +7,7 @@ import Downloads from "./pages/Downloads";
 import Player from "./pages/Player";
 import ChannelList from "./pages/ChannelList";
 import RelatedList from "./components/RelatedList";
+import Schedule from "./pages/Schedule"
 
 Vue.use(VueRouter);
 
@@ -35,6 +36,14 @@ const router = new VueRouter({
           path: 'downloads',
           components: {
             homeView: Downloads
+          },
+
+        },
+        {
+          name: "schedule",
+          path: 'schedule',
+          components: {
+            homeView: Schedule
           },
 
         }

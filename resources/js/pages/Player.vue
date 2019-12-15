@@ -7,7 +7,7 @@
       .player-container
         #player
     .wrapper
-      ChannelRow(v-if="channels && channel" :name="channel.category" :channels="channels")
+      ChannelRow(v-if="channels && channel" :category="category" :channels="channels")
     // .tabs
     //  router-link(:to="relatedChannelsRoute")
     //    .tab.downloads(:class="{highlighted: !isHighlighted}") Related
@@ -20,67 +20,77 @@
 
 <script>
 
-    import axios from 'axios';
-    import ChannelCard from "../components/ChannelCard";
-    import ChannelList from "./ChannelList";
-    import ChannelRow from "../components/ChannelRow";
+  import ChannelCard from "../components/ChannelCard"
+  import ChannelList from "./ChannelList"
+  import ChannelRow from "../components/ChannelRow"
+  import {getChannel, getChannelsByCategory} from "@/js/api/channel"
+  import {getCategory} from "../api/category"
 
-    export default {
-        name: "player",
-        components: {ChannelRow, ChannelList, ChannelCard},
-        data() {
-            return {channel: null, channels: null, player: null, isHighlighted: true};
-        },
-        watch: {
-            $route (toRoute, fromRoute) {
-                this.isHighlighted = toRoute.name === 'channels';
-                this.player.destroy();
-                this.getChannel();
-            }
-        },
-        methods: {
-            getChannel() {
-                axios.get(`http://tv.sawadland.com:3000/api/channels/${this.$route.params.id}`).then(response => {
-                    this.channel = response.data.channel;
-                    if (this.player) {
-                        this.player.destroy();
-                    }
-                    this.player = new Clappr.Player({
-                        source: this.channel.url,
-                        parentId: "#player",
-                        poster: `http://tv.sawadland.com:3000/uploads/images/${this.channel.image}`,
-                        width: '100%',
-                        height: '100%',
-                        autoPlay: true,
-                    });
-                });
-            },
-            getChannels() {
-                axios.get('http://tv.sawadland.com:3000/api/channels').then(response => {
-                    this.channels = response.data.channels;
-                });
-            },
-        },
-        mounted() {
-            this.isHighlighted = this.$route.name === 'channels';
-            this.getChannel();
-            this.getChannels();
-        },
-        computed: {
-            relatedChannelsRoute() {
-                return `/channel/${this.$route.params.id}/related`;
-            },
-
-            allChannelsRoute() {
-                return `/channel/${this.$route.params.id}/all`;
-            }
-        },
-
-        destroyed() {
-            this.player.destroy();
+  export default {
+    name: "player",
+    components: {ChannelRow, ChannelList, ChannelCard},
+    data() {
+      return {
+        channel: null,
+        channels: null,
+        player: null,
+        category: null,
+        isHighlighted: true
+      }
+    },
+    watch: {
+      $route(toRoute, fromRoute) {
+        this.isHighlighted = toRoute.name === 'channels'
+        this.player.destroy()
+        this.getChannel()
+      }
+    },
+    methods: {
+      async getChannel() {
+        const channel = await getChannel(this.$route.params.id)
+        this.channel = channel.channel
+        if (this.player) {
+          this.player.destroy()
         }
+        this.player = new Clappr.Player({
+          source: this.channel.url,
+          parentId: "#player",
+          poster: this.channel.image,
+          width: '100%',
+          height: '100%',
+          autoPlay: true,
+        })
+      },
+      async getChannels() {
+        const channels = await getChannelsByCategory(this.channel.category_id)
+        this.channels = channels.channels
+      },
+      async getCategory() {
+        const category = await getCategory(this.channel.category_id)
+        this.category = category.category
+      }
+    },
+    async created() {
+      this.isHighlighted = this.$route.name === 'channels'
+      await this.getChannel()
+      await this.getCategory()
+      await this.getChannels()
+    },
+    computed: {
+      relatedChannelsRoute() {
+        return `/channel/${this.$route.params.id}/related`
+      },
 
+      allChannelsRoute() {
+        return `/channel/${this.$route.params.id}/all`
+      }
+    },
+
+    destroyed() {
+      this.player.destroy()
     }
+
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -144,6 +154,7 @@
     flex-direction: row;
     cursor: pointer;
     font-family: "Dubai-Light", sans-serif;
+
     .tab {
       margin: 10px;
       padding: 2px;

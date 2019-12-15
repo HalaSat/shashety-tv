@@ -1,9 +1,9 @@
 <template lang="pug">
   .promo
-      img.first-promo-img( src="images/first.png")
+      img.first-promo-img( :src="image")
       .promo-text
-        div(class="headline font-dubai-medium") A Unique Way to Enjoy
-        div(class="no-margin subtitle font-dubai-light") More Than 200 Live Channels
+        div(class="headline font-dubai-medium") {{ title || 'A Unique Way to Enjoy' }}
+        div(class="no-margin subtitle font-dubai-light") {{ subtitle || 'More Than 200 Live Channels' }}
         router-link(to="/home/live-tv")
           .play-row
             play-button
@@ -13,7 +13,12 @@
 import PlayButton from "./PlayButton";
 
 export default {
-  components: { "play-button": PlayButton }
+  components: { "play-button": PlayButton },
+  props: {
+    image: { type: String, required: true },
+    title: { type: String },
+    subtitle: { type: String },
+  },
 };
 </script>
 <style lang="scss" scoped>

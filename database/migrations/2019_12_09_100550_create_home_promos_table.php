@@ -15,7 +15,8 @@ class CreateHomePromosTable extends Migration
     {
         Schema::create('home_promos', function (Blueprint $table) {
           $table->bigIncrements('id');
-          $table->string('title');
+          $table->string('title')->default('Watch Now');
+          $table->string('title_ar')->default('Watch Now');;
           $table->string('channel_id')->nullable();
           $table->string('channel_logo')->nullable();
           $table->string('promo_image')->nullable();

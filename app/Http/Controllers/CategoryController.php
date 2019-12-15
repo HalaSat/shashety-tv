@@ -14,15 +14,15 @@ class CategoryController extends Controller
    */
   public function index()
   {
-    $categorys = Category::all();
+    $categories = Category::all();
 
-    return response()->json(['categorys' => $categorys]);
+    return response()->json(['categories' => $categories]);
   }
 
-  public function getChannels(Request $request) {
-    $category = Category::find($request->id);
+  public function getChannels(Category $category)
+  {
     $channels =  $category->channels;
-    return response()->json(['category' => $category->name,'channels' => $channels]);
+    return response()->json(['category' => $category->name, 'channels' => $channels]);
   }
 
   /**
@@ -43,7 +43,6 @@ class CategoryController extends Controller
       $category->save();
 
       return response()->json(['category' => $category, 'status' => 'created']);
-
     } catch (\Exception $exception) {
       return response()->json(['error' => 'Could not create a new category'], 500);
     }
@@ -94,7 +93,7 @@ class CategoryController extends Controller
         return response()->json(['status' => 'deleted']);
       }
 
-      return response()->json(['error' => 'not found'],404);
+      return response()->json(['error' => 'not found'], 404);
     } catch (\Exception $e) {
       return response()->json(['error' => 'Cannot delete category'], 400);
     }

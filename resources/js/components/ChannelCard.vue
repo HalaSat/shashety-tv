@@ -9,10 +9,10 @@
         props: ['channel'],
         computed: {
             url() {
-                return `/channel/${this.channel._id}`
+                return `/channel/${this.channel.id}`
             },
             img() {
-                return `//tv.sawadland.com:3000/uploads/images/${this.channel.image}`;
+                return '/' + this.channel.image;
             }
         }
     }

@@ -1,6 +1,6 @@
 <template lang="pug">
   .channel-row-wrapper
-    .title {{ name }}
+    .title {{ category.name }}
     .channel-row(:class="collapsed ? 'collapse' : ''" v-if="channels")
       channel-card(v-for="channel in data" :channel="channel" :key="channel.id")
     .see-more(v-on:click="collapse")
@@ -10,35 +10,36 @@
 </template>
 
 <script>
-    import ChannelCard from "./ChannelCard";
-    import DownArrow from "./DownArrow";
+  import ChannelCard from "./ChannelCard"
+  import DownArrow from "./DownArrow"
 
-    export default {
-        name: "channel-row",
-        data() {
-            return {
-                collapsed: true,
-                data:  this.channels.filter(channel => channel.category === this.name)
-            };
-        },
-        props: {
-            'channels': {type: Array},
-            'name': {type: String, default: 'Featured'}
-        },
-        components: {DownArrow, 'channel-card': ChannelCard},
-        methods: {
-            collapse() {
-                this.collapsed = !this.collapsed;
-            },
+  export default {
+    name: "channel-row",
+    data() {
+      return {
+        collapsed: true,
+        data: this.channels.filter(channel => channel.category_id === this.category.id)
+      }
+    },
+    props: {
+      'channels': {type: Array},
+      'category': {type: Object}
+    },
+    components: {DownArrow, 'channel-card': ChannelCard},
+    methods: {
+      collapse() {
+        this.collapsed = !this.collapsed
+      },
 
-        }
     }
+  }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
   .channel-row-wrapper {
     margin-bottom: 10px;
   }
+
   .collapse {
     overflow: hidden;
     height: 12.5vw;

@@ -1,24 +1,24 @@
 <template lang="pug">
   div
-    div(v-if="imagePosition == 'right'")
+    div(v-if="imagePosition === 'right'")
       .row
         .text
-          .head.font-dubai-medium {{ head }}
-          .subhead.font-dubai-light {{ subhead }}
+          .head.font-dubai-medium {{ title }}
+          .subhead.font-dubai-light {{ subtitle }}
         img.promo-img(:src="imageUrl" :style="style")
       .divider-left
     div(v-else)
       .row
         img.promo-img(:src="imageUrl" :style="style")
         .text
-          .head.font-dubai-medium {{ head }}
-          .subhead.font-dubai-light {{ subhead }}
+          .head.font-dubai-medium {{ title }}
+          .subhead.font-dubai-light {{ subtitle }}
       .divider-right
 </template>
 <script>
 export default {
   name: "secondary-promo",
-  props: ["head", "subhead", "imageUrl", "image-position", "height"],
+  props: ["title", "subtitle", "imageUrl", "image-position", "height"],
   computed: {
     style() {
       return `height: ${this.height}`;

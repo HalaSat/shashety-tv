@@ -1,5 +1,6 @@
 <template lang="pug">
   div
+
     router-view
     app-footer
 </template>

@@ -12,7 +12,7 @@
                 return `/channel/${this.channel.id}`
             },
             img() {
-                return '/' + this.channel.image;
+                return this.channel.image;
             }
         }
     }

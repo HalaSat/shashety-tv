@@ -69,7 +69,7 @@
 
   .title {
     display: inline-block;
-    font-size: 2.1rem;
+    font-size: 2.0rem;
     font-weight: bold;
     margin-bottom: 10px;
   }

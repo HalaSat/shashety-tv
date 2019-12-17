@@ -1,5 +1,5 @@
 <template lang="pug">
-  .downloads-container(v-if="landing")
+  .downloads-container(v-if="landing" :dir="locale === '_ar' ? 'rtl' : 'ltr'")
     .apps-title {{ landing['apps_title' + locale] }}
     .apps-subtitle {{ landing['apps_subtitle' + locale] }}
     .img-wrapper

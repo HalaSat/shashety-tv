@@ -15,7 +15,7 @@ class FileController extends Controller
       $fullName = $file->getClientOriginalName();
       $name = substr($fullName, 0, strpos($fullName, '.'));
       $filePath = Storage::disk('public')->put("images/$name", $file);
-      return response()->json(['path' => $filePath]);
+      return response()->json(['path' => '/storage/'. $filePath]);
     }
 
     return response()->json(['error' => 'No file uploaded'], 400);

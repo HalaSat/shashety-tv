@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     nav.nav-bar.gradient
-      router-link.logo(to="/")
+      router-link.logo(:to="$route.path === '/home/live-tv' ? '/' : '/home/live-tv'")
         img(src="/images/logo.png")
       .expanded
       .left
@@ -15,22 +15,33 @@
 </template>
 <script>
   import Footer from "../components/Footer"
-  import store from '../stores/store'
   import {mapState} from "vuex"
 
   export default {
     components: {'app-footer': Footer},
     mounted() {
-      const locale = localStorage.getItem('locale')
+      const locale = localStorage.getItem('locale') || ''
       this.changeLocale(locale)
     },
     methods: {
       changeLocale(locale) {
         this.$store.dispatch({type: 'changeLocale', locale: locale})
-      }
+      },
     },
     computed: mapState({
       locale: state => state.locale
     })
   }
 </script>
+
+
+<style lang="scss" scoped>
+  @media screen and (max-width: 700px) {
+    .button.downloads {
+      display: none;
+    }
+    .button.schedule {
+      display: none;
+    }
+  }
+</style>

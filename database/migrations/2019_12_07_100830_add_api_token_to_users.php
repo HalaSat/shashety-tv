@@ -18,7 +18,7 @@ class AddApiTokenToUsers extends Migration
         ->after('password')
         ->unique()
         ->nullable()
-        ->default(null);
+        ->default(\Illuminate\Support\Str::random(16));
     });
   }
 

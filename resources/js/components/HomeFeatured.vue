@@ -11,7 +11,7 @@
 
     .watch-now
       img.channel-logo(:src="channelLogoPath" width="200px")
-      router-link.button.downloads(:to="channelPath") {{ homePromo['title' + locale] }}
+      router-link.button.downloads(:to="channelPath") {{ countDown || homePromo['title' + locale] }}
 
 </template>
 
@@ -22,7 +22,11 @@
   export default {
     name: "home-featured",
     data() {
-      return {isHighlighted: 0, homePromo: null}
+      return {
+        isHighlighted: 0,
+        homePromo: null,
+        countDown: null
+      }
     },
     watch: {
       $route(toRoute, fromRoute) {
@@ -33,6 +37,7 @@
       this.isHighlighted = this.$route.name
     },
     async created() {
+      this.startCountDown()
       await this.getHomePromo()
     },
     methods: {
@@ -40,6 +45,43 @@
         const homePromo = await getHomePromo()
         const {home_promo} = homePromo
         this.homePromo = home_promo
+      },
+      startCountDown() {
+        const countDownDate = new Date("Dec 18, 2019 22:00:00").getTime()
+        // Update the count down every 1 second
+        const x = setInterval(() => {
+
+          // Get today's date and time
+          const now = new Date().getTime()
+
+          // Find the distance between now and the count down date
+          const distance = countDownDate - now
+
+          // Time calculations for days, hours, minutes and seconds
+          let hours = Math.floor(distance / (1000 * 60 * 60))
+          // if (hours < 10) {
+          //   hours = `0${hours}`
+          // }
+          // const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+          let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+          // if (minutes < 10) {
+          //   minutes = `0${hours}`
+          // }
+          let seconds = Math.floor((distance % (1000 * 60)) / 1000)
+          // if (seconds < 10) {
+          //   seconds = `0${hours}`
+          // }
+          // Display the result in the element with id="demo"
+          this.countDown = hours + " : "
+            + minutes + " : " + seconds
+          console.log(this.countDown)
+
+          // If the count down is finished, write some text
+          if (distance < 0) {
+            clearInterval(x)
+            this.countDown = null
+          }
+        }, 1000)
       }
     },
     computed: {
@@ -48,7 +90,7 @@
         return `
             position: relative;
             height: 527px;
-            background: url("/${promo_image}") center;
+            background: url("${promo_image}") center;
             background-size: cover;
         `
       },
@@ -57,8 +99,7 @@
         return `/channel/${channel_id}`
       },
       channelLogoPath() {
-        const {channel_logo} = this.homePromo
-        return `/${channel_logo}`
+        return this.homePromo.channel_logo
       },
       locale() {
         return store.state.locale

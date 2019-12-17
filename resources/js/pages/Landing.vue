@@ -15,7 +15,7 @@
         :subtitle="promo['subtitle' + locale]"
         :image-url="promo.image"
         :image-position="promo.image_position"
-        height="20vw"
+        height="30vw"
       )
 
 </template>
@@ -88,7 +88,7 @@
     .left {
       display: flex;
       align-items: center;
-      margin-right: 50px;
+      /*margin-right: 50px;*/
 
       a {
         cursor: pointer;
@@ -128,13 +128,18 @@
     box-shadow: 0 0 0 2px;
   }
 
-  /*@media screen and(max-width: 700px) {*/
-  /*  .downloads {*/
-  /*    display: none;*/
-  /*  }*/
-  /*}*/
+  @media screen and(max-width: 700px) {
+
+    .nav-bar {
+      padding: 20px 20px;
+    }
+    .nav-bar .logo img {
+      width: 30vw;
+    }
+  }
 
   .highlighted {
     font-family: "Dubai-Bold", sans-serif;
   }
+
 </style>

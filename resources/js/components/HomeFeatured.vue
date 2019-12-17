@@ -1,24 +1,23 @@
 <template lang="pug">
   .featured(v-if="homePromo" :style="style")
-    router-link(to="/")
-      img.logo(src="/images/logo.png")
     .bottom-gradient
     .tabs
       router-link(to="/home/live-tv")
-        .tab.live-tv(:class="{highlighted: isHighlighted === 'live-tv'}") LiveTV
+        .tab.live-tv(:class="{highlighted: isHighlighted === 'live-tv'}") {{ locale === '_ar' ? 'قنوات التلفاز' : 'LiveTV'}}
       router-link(to="/home/schedule")
-        .tab.live-tv(:class="{highlighted: isHighlighted === 'schedule'}") Schedule
+        .tab.live-tv(:class="{highlighted: isHighlighted === 'schedule'}") {{ locale === '_ar' ? 'الجدول' : 'Schedule'}}
       router-link(to="/home/downloads")
-        .tab.downloads(:class="{highlighted: isHighlighted === 'downloads'}") Downloads
+        .tab.downloads(:class="{highlighted: isHighlighted === 'downloads'}") {{ locale === '_ar' ? 'التحميلات' : 'Downloads'}}
 
     .watch-now
       img.channel-logo(:src="channelLogoPath" width="200px")
-      router-link.button.downloads(:to="channelPath") {{ homePromo.title }}
+      router-link.button.downloads(:to="channelPath") {{ homePromo['title' + locale] }}
 
 </template>
 
 <script>
   import {getHomePromo} from "../api/home_promo"
+  import store from "../stores/store"
 
   export default {
     name: "home-featured",
@@ -60,6 +59,9 @@
       channelLogoPath() {
         const {channel_logo} = this.homePromo
         return `/${channel_logo}`
+      },
+      locale() {
+        return store.state.locale
       }
     }
   }
@@ -110,7 +112,7 @@
     cursor: pointer;
     font-family: "Dubai-Light", sans-serif;
 
-    .tab{
+    .tab {
       margin: 10px;
       padding: 2px;
     }
@@ -135,7 +137,7 @@
     margin-bottom: 30px;
   }
 
-  @media screen and (max-width: 700px){
+  @media screen and (max-width: 700px) {
     img.logo {
       padding: 50px 10px;
       width: 100px;

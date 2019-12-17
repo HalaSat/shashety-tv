@@ -24,7 +24,6 @@ export default {
   computed: {
     leagueLogo() {
       const id = this.league.competition.id;
-      console.log(id);
       return `https://imagecache.365scores.com/image/upload/f_auto,w_72,h_72,c_limit,q_auto:eco,d_Countries:Round:1.png/Competitions/Light/${id}`;
     }
   }
@@ -77,6 +76,7 @@ export default {
   height: 1px;
   margin: 25px 0;
   background: linear-gradient(90deg, silver, transparent);
+  width: 100%;
 }
 .games-wrapper {
   font-family: "Dubai-Light", sans-serif;

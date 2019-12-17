@@ -15,7 +15,6 @@
     export default {
         name: "related-list",
         data() {
-            console.log('this is data');
             return {
                 collapsed: true,
                 data:  this.channels.filter(channel => channel.category === this.name)
@@ -31,10 +30,6 @@
             },
 
         },
-        mounted() {
-            console.log('this is data');
-            console.log(this.$route.params);
-        }
     }
 </script>
 

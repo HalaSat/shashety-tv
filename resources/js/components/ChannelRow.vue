@@ -1,6 +1,6 @@
 <template lang="pug">
   .channel-row-wrapper
-    .title {{ category.name }}
+    .title {{ category['name' + locale] }}
     .channel-row(:class="collapsed ? 'collapse' : ''" v-if="channels")
       channel-card(v-for="channel in data" :channel="channel" :key="channel.id")
     .see-more(v-on:click="collapse")
@@ -23,7 +23,8 @@
     },
     props: {
       'channels': {type: Array},
-      'category': {type: Object}
+      'category': {type: Object},
+      'locale': {type: String},
     },
     components: {DownArrow, 'channel-card': ChannelCard},
     methods: {

@@ -1,13 +1,12 @@
 <template lang="pug">
   .player-page
     .navbar
-      router-link(to="/home/live-tv")
-        img.logo(src="/images/logo.png")
+
     .channel-container
       .player-container
         #player
     .wrapper
-      ChannelRow(v-if="channels && channel" :category="category" :channels="channels")
+      ChannelRow(v-if="channels && channel" :category="category" :channels="channels" :locale="locale")
     // .tabs
     //  router-link(:to="relatedChannelsRoute")
     //    .tab.downloads(:class="{highlighted: !isHighlighted}") Related
@@ -25,6 +24,7 @@
   import ChannelRow from "../components/ChannelRow"
   import {getChannel, getChannelsByCategory} from "@/js/api/channel"
   import {getCategory} from "../api/category"
+  import store from "../stores/store"
 
   export default {
     name: "player",
@@ -45,6 +45,7 @@
         this.getChannel()
       }
     },
+
     methods: {
       async getChannel() {
         const channel = await getChannel(this.$route.params.id)
@@ -83,6 +84,10 @@
 
       allChannelsRoute() {
         return `/channel/${this.$route.params.id}/all`
+      },
+
+      locale() {
+        return store.state.locale
       }
     },
 
@@ -105,7 +110,7 @@
   }
 
   .navbar {
-    padding: 50px;
+    height: 150px;
   }
 
   img.logo {

@@ -1,6 +1,6 @@
 <template lang="pug">
   .channel-list-container(v-if="categories && channels")
-    channel-row(v-for="category in categories" :channels="channels" :category="category" :key="category.id")
+    channel-row(v-for="category in categories" :channels="channels" :category="category" :key="category.id" :locale="locale")
   loading-indicator(v-else)
 </template>
 
@@ -9,6 +9,7 @@
   import LoadingIndicator from "@/js/components/LoadingIndicator"
   import {getCategories} from "@/js/api/category"
   import {getChannels} from "@/js/api/channel"
+  import store from "../stores/store"
 
   export default {
     name: "channel-list",
@@ -16,11 +17,13 @@
     data() {
       return {
         categories: null,
-        channels: null,
+        channels: null
       }
     },
+    mounted() {
+      this.locale = localStorage.getItem('locale')
+    },
     created() {
-      console.log(this.$route)
       this.getChannels()
     },
     methods: {
@@ -31,6 +34,11 @@
         this.channels = channels.channels
       },
     },
+    computed: {
+      locale() {
+        return store.state.locale
+      }
+    }
   }
 </script>
 

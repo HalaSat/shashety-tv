@@ -7,7 +7,7 @@
         router-link(to="/home/live-tv")
           .play-row
             play-button
-            div(class="get-started subtitle font-dubai-light") Get Started
+            div(class="get-started subtitle font-dubai-light") {{ getStarted }}
 </template>
 <script>
 import PlayButton from "./PlayButton";
@@ -18,6 +18,7 @@ export default {
     image: { type: String, required: true },
     title: { type: String },
     subtitle: { type: String },
+    getStarted: {type: String }
   },
 };
 </script>

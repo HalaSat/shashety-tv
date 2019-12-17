@@ -25,6 +25,7 @@ class HomePromoController extends Controller
   {
     $request->validate([
       'title' => 'required|max:255',
+      'title_ar' => 'required|max:255',
       'promo_image' => 'required',
       'channel_id' => 'required',
       'channel_logo' => 'required',
@@ -36,6 +37,7 @@ class HomePromoController extends Controller
         $homePromo = new HomePromo();
       }
       $homePromo->title = $request->title;
+      $homePromo->title_ar = $request->title_ar;
       $homePromo->promo_image = $request->promo_image;
       $homePromo->channel_id = $request->channel_id;
       $homePromo->channel_logo = $request->channel_logo;

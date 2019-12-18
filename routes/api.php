@@ -26,6 +26,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   // return $request->user();
 });
 
+Route::resource('/votes', 'VoteController');
+Route::resource('/vote_posts', 'VotePostController');
 Route::get('/landing', 'LandingController@index');
 Route::get('/channels/category/{category}', 'CategoryController@getChannels');
 Route::get('/promos', 'PromoController@index');

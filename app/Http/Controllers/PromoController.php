@@ -57,7 +57,7 @@ class PromoController extends Controller
    * Display the specified resource.
    *
    * @param \App\Promo $promo
-   * @return \Illuminate\Http\Response
+   * @return \Illuminate\Http\JsonResponse
    */
   public function show(Promo $promo)
   {

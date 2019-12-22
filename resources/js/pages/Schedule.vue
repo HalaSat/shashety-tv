@@ -111,9 +111,11 @@
       },
 
       isHighlighted(newValue, oldValue) {
-        this.schedule = null
-        this.schedule_ar = null
-        this.getSchedule(newValue.date)
+        if (newValue.date !== oldValue.date) {
+          this.schedule = null
+          this.schedule_ar = null
+          this.getSchedule(newValue.date)
+        }
       }
     },
     computed: {

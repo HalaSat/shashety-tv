@@ -4893,6 +4893,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       schedule: null,
+      schedule_ar: null,
       week: {
         today: '',
         selected_day: {},
@@ -4932,27 +4933,38 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getSchedule: function getSchedule(date) {
-      var locale,
-          langId,
-          result,
-          _args2 = arguments;
+      var result;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function getSchedule$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              locale = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : this.locale;
-              langId = locale === '_ar' ? 27 : 1;
-              _context2.next = 4;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(Object(_api_schedule__WEBPACK_IMPORTED_MODULE_2__["getGames"])(langId, date, date));
+              _context2.next = 2;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(Object(_api_schedule__WEBPACK_IMPORTED_MODULE_2__["getGames"])(date));
 
-            case 4:
+            case 2:
               result = _context2.sent;
-              this.schedule = result["competitions"].map(function (competition) {
-                var games = result.games.filter(function (_ref) {
+              this.schedule = result.schedule["competitions"].map(function (competition) {
+                var schedule = result.schedule;
+                var games = schedule.games.filter(function (_ref) {
                   var competitionId = _ref.competitionId;
                   return competitionId === competition.id;
                 });
-                var country = result.countries.find(function (country) {
+                var country = schedule.countries.find(function (country) {
+                  return country.id === competition.countryId;
+                });
+                return {
+                  competition: competition,
+                  games: games,
+                  country: country
+                };
+              });
+              this.schedule_ar = result.schedule_ar["competitions"].map(function (competition) {
+                var schedule = result.schedule_ar;
+                var games = schedule.games.filter(function (_ref2) {
+                  var competitionId = _ref2.competitionId;
+                  return competitionId === competition.id;
+                });
+                var country = schedule.countries.find(function (country) {
                   return country.id === competition.countryId;
                 });
                 return {
@@ -4962,7 +4974,7 @@ __webpack_require__.r(__webpack_exports__);
                 };
               });
 
-            case 6:
+            case 5:
             case "end":
               return _context2.stop();
           }
@@ -5002,13 +5014,13 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     locale: function locale(newValue, oldValue) {
       if (newValue !== oldValue) {
-        this.setupDays();
-        this.schedule = null;
-        this.getSchedule(this.isHighlighted.date);
+        this.setupDays(); // this.schedule = null
+        // this.getSchedule(this.isHighlighted.date)
       }
     },
     isHighlighted: function isHighlighted(newValue, oldValue) {
       this.schedule = null;
+      this.schedule_ar = null;
       this.getSchedule(newValue.date);
     }
   },
@@ -103730,15 +103742,20 @@ var render = function() {
         }),
         0
       ),
-      _vm.schedule
+      (_vm.locale === "_ar"
+      ? _vm.schedule_ar
+      : _vm.schedule)
         ? _c(
             "div",
-            _vm._l(_vm.schedule, function(league) {
-              return _c("schedule-game", {
-                key: league.id,
-                attrs: { league: league }
-              })
-            }),
+            _vm._l(
+              _vm.locale === "_ar" ? _vm.schedule_ar : _vm.schedule,
+              function(league) {
+                return _c("schedule-game", {
+                  key: league.id,
+                  attrs: { league: league }
+                })
+              }
+            ),
             1
           )
         : _c("loading-indicator")
@@ -120321,11 +120338,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var base = "http://tv.sawadland.com:8999/https://webws.365scores.com/web";
 function getGames() {
-  var langId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-  var startDate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : moment__WEBPACK_IMPORTED_MODULE_1___default()().format("DD/MM/YYYY");
-  var endDate = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : moment__WEBPACK_IMPORTED_MODULE_1___default()().format("DD/MM/YYYY");
+  var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : moment__WEBPACK_IMPORTED_MODULE_1___default()().format("DD/MM/YYYY");
   return Object(_js_utils_request__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    url: "".concat(base, "/games/?langId=").concat(langId, "&timezoneName=Asia/Baghdad&userCountryId=-1&appTypeId=5&sports=1&startDate=").concat(startDate, "&endDate=").concat(endDate),
+    url: "/schedule?date=".concat(date),
     method: "get"
   });
 }

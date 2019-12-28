@@ -91,8 +91,7 @@ class Kernel extends ConsoleKernel
           }
         }
       }
-    })->daily();
-
+    })->everyMinute();
   }
 
   protected function makeDate($day = 0)

@@ -83,7 +83,7 @@ class Kernel extends ConsoleKernel
           $channelProgramsTable->save();
         }
       }
-    })->hourly();
+    })->daily();
   }
 
   protected function makeDate($day = 0)

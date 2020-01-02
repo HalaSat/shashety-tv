@@ -9,6 +9,8 @@ import ChannelList from "./pages/ChannelList"
 import RelatedList from "./components/RelatedList"
 import Schedule from "./pages/Schedule"
 import TvGuide from "./pages/TvGuide"
+import KidsTv from "./pages/KidsTv"
+import KidsPlayer from "./pages/KidsPlayer"
 
 Vue.use(VueRouter)
 
@@ -19,6 +21,20 @@ const router = new VueRouter({
       path: "/",
       name: "landing",
       component: Landing
+    },
+    {
+      path: '/kids-tv',
+      name: 'kids-tv',
+      components: {
+        kidsView: KidsTv
+      }
+    },
+    {
+      path: '/kids-player/:id',
+      name: 'kids-player',
+      components: {
+        kidsView: KidsPlayer
+      }
     },
     {
       path: "/home",

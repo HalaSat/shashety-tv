@@ -21,8 +21,7 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      name: "landing",
-      component: Landing
+      redirect: '/home/live-tv'
     },
     {
       path: '/kids-tv',

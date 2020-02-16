@@ -10,7 +10,7 @@
   }
 </script>
 <style lang="scss" scoped>
-  $primary-color: #d60000;
+  $primary-color: #a80707;
 
 
   .circle {

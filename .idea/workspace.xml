@@ -2,9 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ef5be36-05e2-4a74-a989-29201fd1596e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/mohammedsalman.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/mohammedsalman.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ChannelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChannelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ScheduleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/api/news.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/api/news.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ArticleItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ArticleItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ChannelCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ChannelCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ChannelRow.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ChannelRow.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DownArrow.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DownArrow.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Footer.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/HomeFeatured.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/HomeFeatured.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Match.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Match.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/PlayButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PlayButton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/RelatedList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/RelatedList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/News.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/News.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/TvGuide.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/TvGuide.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +260,13 @@
       <workItem from="1578072132667" duration="17000" />
       <workItem from="1578136035293" duration="57000" />
       <workItem from="1578152352092" duration="908000" />
-      <workItem from="1578319378310" duration="87000" />
+      <workItem from="1578319378310" duration="587000" />
+      <workItem from="1578320958210" duration="2754000" />
+      <workItem from="1581588998990" duration="3865000" />
+      <workItem from="1581685086308" duration="301000" />
+      <workItem from="1581749478524" duration="1089000" />
+      <workItem from="1581751826529" duration="9527000" />
+      <workItem from="1581838227521" duration="2838000" />
     </task>
     <servers />
   </component>
@@ -310,22 +336,26 @@
       <screen x="39" y="23" width="1401" height="877" />
     </state>
     <state x="473" y="379" key="ComposerInitDialogKey/39.23.1401.877@39.23.1401.877" timestamp="1577006793408" />
-    <state width="1359" height="211" key="GridCell.Tab.0.bottom" timestamp="1576491839319">
-      <screen x="39" y="23" width="1401" height="877" />
+    <state width="678" height="239" key="GridCell.Tab.0.bottom" timestamp="1581685018984">
+      <screen x="40" y="23" width="1400" height="877" />
     </state>
     <state width="1359" height="211" key="GridCell.Tab.0.bottom/39.23.1401.877@39.23.1401.877" timestamp="1576491839319" />
-    <state width="1359" height="211" key="GridCell.Tab.0.center" timestamp="1576491839319">
-      <screen x="39" y="23" width="1401" height="877" />
+    <state width="678" height="239" key="GridCell.Tab.0.bottom/40.23.1400.877@40.23.1400.877" timestamp="1581685018984" />
+    <state width="678" height="239" key="GridCell.Tab.0.center" timestamp="1581685018980">
+      <screen x="40" y="23" width="1400" height="877" />
     </state>
     <state width="1359" height="211" key="GridCell.Tab.0.center/39.23.1401.877@39.23.1401.877" timestamp="1576491839319" />
-    <state width="1359" height="211" key="GridCell.Tab.0.left" timestamp="1576491839318">
-      <screen x="39" y="23" width="1401" height="877" />
+    <state width="678" height="239" key="GridCell.Tab.0.center/40.23.1400.877@40.23.1400.877" timestamp="1581685018980" />
+    <state width="678" height="239" key="GridCell.Tab.0.left" timestamp="1581685018976">
+      <screen x="40" y="23" width="1400" height="877" />
     </state>
     <state width="1359" height="211" key="GridCell.Tab.0.left/39.23.1401.877@39.23.1401.877" timestamp="1576491839318" />
-    <state width="1359" height="211" key="GridCell.Tab.0.right" timestamp="1576491839319">
-      <screen x="39" y="23" width="1401" height="877" />
+    <state width="678" height="239" key="GridCell.Tab.0.left/40.23.1400.877@40.23.1400.877" timestamp="1581685018976" />
+    <state width="678" height="239" key="GridCell.Tab.0.right" timestamp="1581685018981">
+      <screen x="40" y="23" width="1400" height="877" />
     </state>
     <state width="1359" height="211" key="GridCell.Tab.0.right/39.23.1401.877@39.23.1401.877" timestamp="1576491839319" />
+    <state width="678" height="239" key="GridCell.Tab.0.right/40.23.1400.877@40.23.1400.877" timestamp="1581685018981" />
     <state x="409" y="268" key="NewPhpClassDialog" timestamp="1577045165570">
       <screen x="39" y="23" width="1401" height="877" />
     </state>
@@ -338,11 +368,12 @@
       <screen x="39" y="23" width="1401" height="877" />
     </state>
     <state x="469" y="211" width="540" height="540" key="StructurePopup/39.23.1401.877@39.23.1401.877" timestamp="1577044839039" />
-    <state width="593" height="445" key="SwitcherDM" timestamp="1577365712470">
-      <screen x="38" y="23" width="1402" height="877" />
+    <state width="593" height="445" key="SwitcherDM" timestamp="1581767316993">
+      <screen x="40" y="23" width="1400" height="877" />
     </state>
     <state width="593" height="445" key="SwitcherDM/38.23.1402.877@38.23.1402.877" timestamp="1577365712470" />
     <state width="592" height="445" key="SwitcherDM/39.23.1401.877@39.23.1401.877" timestamp="1577198250474" />
+    <state width="593" height="445" key="SwitcherDM/40.23.1400.877@40.23.1400.877" timestamp="1581767316993" />
     <state x="482" y="313" key="cloudConfig.PluginsDialog" timestamp="1577521866196">
       <screen x="39" y="23" width="1401" height="877" />
     </state>
@@ -364,5 +395,17 @@
     </state>
     <state x="403" y="213" width="671" height="676" key="search.everywhere.popup/38.23.1402.877@38.23.1402.877" timestamp="1577790847031" />
     <state x="404" y="213" width="670" height="676" key="search.everywhere.popup/39.23.1401.877@39.23.1401.877" timestamp="1577975945843" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/resources/js/components/Match.vue</url>
+          <line>59</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

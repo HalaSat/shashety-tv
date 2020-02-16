@@ -3490,7 +3490,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "article-item",
@@ -3553,8 +3552,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ChannelCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ChannelCard */ "./resources/js/components/ChannelCard.vue");
 /* harmony import */ var _DownArrow__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DownArrow */ "./resources/js/components/DownArrow.vue");
-//
-//
 //
 //
 //
@@ -3791,18 +3788,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -3810,7 +3795,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "home-featured",
   data: function data() {
     return {
-      isHighlighted: 0,
+      isHighlighted: 'live-tv',
       homePromo: null,
       countDown: null
     };
@@ -3875,17 +3860,16 @@ __webpack_require__.r(__webpack_exports__);
 
             case 3:
               data = _context3.sent;
-              console.log(data);
               countDownDateString = data.game_date.date;
-              _context3.next = 11;
+              _context3.next = 10;
               break;
 
-            case 8:
-              _context3.prev = 8;
+            case 7:
+              _context3.prev = 7;
               _context3.t0 = _context3["catch"](0);
               countDownDateString = null;
 
-            case 11:
+            case 10:
               if (countDownDateString) {
                 countDownDate = new Date(countDownDateString).getTime(); // Update the count down every 1 second
 
@@ -3919,12 +3903,12 @@ __webpack_require__.r(__webpack_exports__);
                 }, 1000);
               }
 
-            case 12:
+            case 11:
             case "end":
               return _context3.stop();
           }
         }
-      }, null, null, [[0, 8]]);
+      }, null, null, [[0, 7]]);
     }
   },
   computed: {
@@ -4046,6 +4030,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
 //
 //
 //
@@ -5743,21 +5729,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      isHighlighted: 'live-tv'
+    };
+  },
   components: {
     'app-footer': _components_Footer__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
     var locale = localStorage.getItem('locale') || '';
     this.changeLocale(locale);
+    this.isHighlighted = this.$route.name;
   },
   methods: {
-    changeLocale: function changeLocale(locale) {
+    changeLocale: function changeLocale() {
       this.$store.dispatch({
         type: 'changeLocale',
-        locale: locale
+        locale: this.locale === '' ? '_ar' : ''
       });
     }
   },
@@ -5765,7 +5762,12 @@ __webpack_require__.r(__webpack_exports__);
     locale: function locale(state) {
       return state.locale;
     }
-  })
+  }),
+  watch: {
+    $route: function $route(toRoute, fromRoute) {
+      this.isHighlighted = toRoute.name;
+    }
+  }
 });
 
 /***/ }),
@@ -7604,7 +7606,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".article-item[data-v-33348f8e] {\n  display: -webkit-box;\n  display: flex;\n  margin: 1rem;\n  -webkit-transition: 0.2s;\n  transition: 0.2s;\n}\n.article-item[data-v-33348f8e]:hover {\n  background: #ffffff33;\n}\n.article-item img[data-v-33348f8e] {\n  margin-left: 0.5rem;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.text-container[data-v-33348f8e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.text-container .article-headline[data-v-33348f8e] {\n  font-size: 1.3rem;\n  margin-bottom: 0.5rem;\n  font-weight: bold;\n}\n.text-container .article-summary[data-v-33348f8e] {\n  font-family: \"Dubai-Light\", sans-serif;\n  font-size: 1rem;\n  color: #f0f0f0d6;\n}\n.text-container .article-date[data-v-33348f8e] {\n  font-family: \"Dubai-Light\", sans-serif;\n  font-size: 1rem;\n  color: #f0f0f0d6;\n  -webkit-box-flex: 1;\n          flex: 1;\n}\n@media screen and (max-width: 700px) {\n.article-item[data-v-33348f8e] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n.article-item img[data-v-33348f8e] {\n    width: 100%;\n}\n}", ""]);
+exports.push([module.i, ".article-item[data-v-33348f8e] {\n  border-radius: 20px;\n  display: -webkit-box;\n  display: flex;\n  margin: 1rem;\n  padding-left: 10px;\n  -webkit-transition: 0.2s;\n  transition: 0.2s;\n}\n.article-item[data-v-33348f8e]:hover {\n  background: #dddddd22;\n}\n.article-item img[data-v-33348f8e] {\n  border-radius: 20px;\n  min-width: 300px;\n  margin-left: 0.5rem;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.text-container[data-v-33348f8e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.text-container .article-headline[data-v-33348f8e] {\n  font-size: 1.3rem;\n  margin-bottom: 0.5rem;\n  font-weight: bold;\n}\n.text-container .article-summary[data-v-33348f8e] {\n  font-family: \"Dubai-Light\", sans-serif;\n  font-size: 1rem;\n  color: #f0f0f0d6;\n}\n.text-container .article-date[data-v-33348f8e] {\n  font-family: \"Dubai-Light\", sans-serif;\n  font-size: 1rem;\n  color: #f0f0f0d6;\n  -webkit-box-flex: 1;\n          flex: 1;\n}\n@media screen and (max-width: 700px) {\n.article-item[data-v-33348f8e] {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n.article-item img[data-v-33348f8e] {\n    width: 100%;\n}\n}", ""]);
 
 // exports
 
@@ -7623,7 +7625,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".channel-link[data-v-06039c18] {\n  scroll-snap-align: start;\n}\n.channel-img[data-v-06039c18] {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  height: 12.3vw;\n  width: 12.3vw;\n  -o-object-fit: cover;\n     object-fit: cover;\n  /*border-radius: 10px;*/\n  /*border: 1px solid silver;*/\n  -webkit-transition: 0.3s;\n  transition: 0.3s;\n}\n.channel-img[data-v-06039c18]:hover {\n  -webkit-transform: scale(1.1);\n          transform: scale(1.1);\n}\n@media screen and (max-width: 700px) {\n.channel-img[data-v-06039c18] {\n    width: 28vw;\n    height: 28vw;\n}\n}", ""]);
+exports.push([module.i, ".channel-link[data-v-06039c18] {\n  scroll-snap-align: start;\n}\n.channel-img[data-v-06039c18] {\n  margin-right: 10px;\n  margin-bottom: 10px;\n  height: 12.3vw;\n  width: 12.3vw;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 20px;\n  /*border: 1px solid silver;*/\n  -webkit-transition: 0.3s;\n  transition: 0.3s;\n}\n.channel-img[data-v-06039c18]:hover {\n  -webkit-transform: scale(1.1);\n          transform: scale(1.1);\n}\n@media screen and (max-width: 700px) {\n.channel-img[data-v-06039c18] {\n    width: 28vw;\n    height: 28vw;\n}\n}", ""]);
 
 // exports
 
@@ -7680,7 +7682,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "footer[data-v-61a7c374] {\n  background: #2e2d2e;\n  border-bottom: 5px solid #d60000;\n  text-align: center;\n  padding: 10px;\n}\nfooter span[data-v-61a7c374] {\n  color: #d60000;\n}", ""]);
+exports.push([module.i, "footer[data-v-61a7c374] {\n  /*background: #111;*/\n  /*border-bottom: 2px solid #a80707;*/\n  text-align: center;\n  padding: 10px;\n}\nfooter span[data-v-61a7c374] {\n  color: #a80707;\n}", ""]);
 
 // exports
 
@@ -7699,7 +7701,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".button[data-v-c930f8d0] {\n  text-decoration: none;\n  color: white;\n  padding: 10px 35px;\n  box-shadow: 0 0 0 2px #d60000;\n  border-radius: 40px;\n  -webkit-transition: 0.2s;\n  transition: 0.2s;\n  text-align: center;\n  font-size: 1.3rem;\n}\n.button[data-v-c930f8d0]:hover {\n  background: rgba(201, 201, 201, 0.219);\n  box-shadow: 0 0 0 3px #d60000;\n}\n.button.channel-button[data-v-c930f8d0]:hover {\n  background: #d60000;\n}\n.featured .bottom-gradient[data-v-c930f8d0] {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  height: 150px;\n  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#03090f));\n  background: linear-gradient(transparent, #03090f);\n}\nimg.logo[data-v-c930f8d0] {\n  padding: 50px;\n  width: 15vw;\n}\n.tabs[data-v-c930f8d0] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  position: absolute;\n  left: 50%;\n  bottom: 50px;\n  -webkit-transform: translate(-50%, 0);\n          transform: translate(-50%, 0);\n  cursor: pointer;\n  font-family: \"Dubai-Light\", sans-serif;\n}\n.tabs .tab[data-v-c930f8d0] {\n  margin: 10px;\n  padding: 2px;\n}\n.tabs .highlighted[data-v-c930f8d0] {\n  font-family: \"Dubai-Regular\", sans-serif;\n  border-bottom: 1px solid red;\n}\n.watch-now[data-v-c930f8d0] {\n  position: absolute;\n  top: 30%;\n  right: 25%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.watch-now .watch-now-title[data-v-c930f8d0] {\n  margin: 10px;\n  font-size: 1.5rem;\n  text-align: center;\n}\nimg.channel-logo[data-v-c930f8d0] {\n  -o-object-fit: contain;\n     object-fit: contain;\n  margin-bottom: 30px;\n}\n@media screen and (max-width: 700px) {\nimg.logo[data-v-c930f8d0] {\n    padding: 50px 10px;\n    width: 100px;\n}\n}", ""]);
+exports.push([module.i, ".button[data-v-c930f8d0] {\n  text-decoration: none;\n  color: white;\n  padding: 10px 35px;\n  box-shadow: 0 0 0 2px #a80707;\n  border-radius: 40px;\n  -webkit-transition: 0.2s;\n  transition: 0.2s;\n  text-align: center;\n  font-size: 1.3rem;\n}\n.button[data-v-c930f8d0]:hover {\n  background: rgba(201, 201, 201, 0.219);\n  box-shadow: 0 0 0 3px #a80707;\n}\n.button.channel-button[data-v-c930f8d0]:hover {\n  background: #a80707;\n}\n.featured .bottom-gradient[data-v-c930f8d0] {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  height: 150px;\n  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#03090f));\n  background: linear-gradient(transparent, #03090f);\n}\nimg.logo[data-v-c930f8d0] {\n  padding: 50px;\n  width: 15vw;\n}\n.watch-now[data-v-c930f8d0] {\n  position: absolute;\n  top: 30%;\n  right: 25%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.watch-now .watch-now-title[data-v-c930f8d0] {\n  margin: 10px;\n  font-size: 1.5rem;\n  text-align: center;\n}\nimg.channel-logo[data-v-c930f8d0] {\n  -o-object-fit: contain;\n     object-fit: contain;\n  margin-bottom: 30px;\n}\n@media screen and (max-width: 700px) {\nimg.logo[data-v-c930f8d0] {\n    padding: 50px 10px;\n    width: 100px;\n}\n}", ""]);
 
 // exports
 
@@ -7718,7 +7720,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".match[data-v-1220302c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  max-width: 500px;\n  width: 100%;\n}\n.game-info .time[data-v-1220302c] {\n  text-align: center;\n  font-family: \"Dubai-Medium\", sans-serif;\n}\n.game-info .stadium[data-v-1220302c] {\n  text-align: center;\n  font-family: \"Dubai-Light\", sans-serif;\n}\n.games .game[data-v-1220302c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  margin: 20px 0;\n}\n.games .game .logo[data-v-1220302c] {\n  width: 35px;\n  height: 35px;\n  margin-right: 20px;\n}", ""]);
+exports.push([module.i, ".match[data-v-1220302c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  max-width: 500px;\n  width: 100%;\n  margin-bottom: 20px;\n}\n.game-info .time[data-v-1220302c] {\n  text-align: center;\n  font-family: \"Dubai-Medium\", sans-serif;\n}\n.game-info .stadium[data-v-1220302c] {\n  text-align: center;\n  font-family: \"Dubai-Light\", sans-serif;\n}\n.games[data-v-1220302c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  /*justify-content: center;*/\n  -webkit-box-align: center;\n          align-items: center;\n  min-width: 200px;\n  max-width: 200px;\n}\n.games .game[data-v-1220302c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  margin: 20px 0;\n}\n.games .game .logo[data-v-1220302c] {\n  width: 35px;\n  height: 35px;\n  margin-right: 20px;\n}", ""]);
 
 // exports
 
@@ -7737,7 +7739,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".circle[data-v-5aec3d9e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  border-radius: 50%;\n}\n.outer[data-v-5aec3d9e] {\n  width: 10vw;\n  height: 10vw;\n  border: 2px dashed #d60000;\n}\n.outer[data-v-5aec3d9e]:hover {\n  -webkit-transform: scale(1.1);\n          transform: scale(1.1);\n}\n.middle[data-v-5aec3d9e] {\n  width: 8.5vw;\n  height: 8.5vw;\n  border: 1px dashed #d60000;\n}\n.inner[data-v-5aec3d9e] {\n  background: #d60000;\n  width: 7vw;\n  height: 7vw;\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n}\n.play[data-v-5aec3d9e] {\n  width: 0;\n  height: 0;\n  border-top: 1.3vw solid transparent;\n  border-bottom: 1.3vw solid transparent;\n  border-left: 1.8vw solid white;\n  margin-right: -5px;\n}\n@-webkit-keyframes rotating-data-v-5aec3d9e {\nfrom {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\nto {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@keyframes rotating-data-v-5aec3d9e {\nfrom {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\nto {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@-webkit-keyframes reverse-rotating-data-v-5aec3d9e {\nfrom {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\nto {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n}\n@keyframes reverse-rotating-data-v-5aec3d9e {\nfrom {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\nto {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n}\n.rotating[data-v-5aec3d9e] {\n  -webkit-animation: rotating-data-v-5aec3d9e 8s linear infinite;\n          animation: rotating-data-v-5aec3d9e 8s linear infinite;\n}\n.rotating[data-v-5aec3d9e]:hover {\n  -webkit-animation: none;\n          animation: none;\n}\n.rotating:hover .reverse-rotating[data-v-5aec3d9e] {\n  -webkit-animation: none;\n          animation: none;\n}\n.reverse-rotating[data-v-5aec3d9e] {\n  -webkit-animation: reverse-rotating-data-v-5aec3d9e 8s linear infinite;\n          animation: reverse-rotating-data-v-5aec3d9e 8s linear infinite;\n}\n@media screen and (max-width: 700px) {\n.outer[data-v-5aec3d9e] {\n    width: 100px;\n    height: 100px;\n}\n.outer[data-v-5aec3d9e]:hover {\n    -webkit-transform: none;\n            transform: none;\n}\n.middle[data-v-5aec3d9e] {\n    width: 85px;\n    height: 85px;\n}\n.inner[data-v-5aec3d9e] {\n    width: 70px;\n    height: 70px;\n}\n.play[data-v-5aec3d9e] {\n    width: 0;\n    height: 0;\n    border-top: 13px solid transparent;\n    border-bottom: 13px solid transparent;\n    border-left: 18px solid white;\n    margin-right: -5px;\n}\n}", ""]);
+exports.push([module.i, ".circle[data-v-5aec3d9e] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  border-radius: 50%;\n}\n.outer[data-v-5aec3d9e] {\n  width: 10vw;\n  height: 10vw;\n  border: 2px dashed #a80707;\n}\n.outer[data-v-5aec3d9e]:hover {\n  -webkit-transform: scale(1.1);\n          transform: scale(1.1);\n}\n.middle[data-v-5aec3d9e] {\n  width: 8.5vw;\n  height: 8.5vw;\n  border: 1px dashed #a80707;\n}\n.inner[data-v-5aec3d9e] {\n  background: #a80707;\n  width: 7vw;\n  height: 7vw;\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n}\n.play[data-v-5aec3d9e] {\n  width: 0;\n  height: 0;\n  border-top: 1.3vw solid transparent;\n  border-bottom: 1.3vw solid transparent;\n  border-left: 1.8vw solid white;\n  margin-right: -5px;\n}\n@-webkit-keyframes rotating-data-v-5aec3d9e {\nfrom {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\nto {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@keyframes rotating-data-v-5aec3d9e {\nfrom {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\nto {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@-webkit-keyframes reverse-rotating-data-v-5aec3d9e {\nfrom {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\nto {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n}\n@keyframes reverse-rotating-data-v-5aec3d9e {\nfrom {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\nto {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n}\n.rotating[data-v-5aec3d9e] {\n  -webkit-animation: rotating-data-v-5aec3d9e 8s linear infinite;\n          animation: rotating-data-v-5aec3d9e 8s linear infinite;\n}\n.rotating[data-v-5aec3d9e]:hover {\n  -webkit-animation: none;\n          animation: none;\n}\n.rotating:hover .reverse-rotating[data-v-5aec3d9e] {\n  -webkit-animation: none;\n          animation: none;\n}\n.reverse-rotating[data-v-5aec3d9e] {\n  -webkit-animation: reverse-rotating-data-v-5aec3d9e 8s linear infinite;\n          animation: reverse-rotating-data-v-5aec3d9e 8s linear infinite;\n}\n@media screen and (max-width: 700px) {\n.outer[data-v-5aec3d9e] {\n    width: 100px;\n    height: 100px;\n}\n.outer[data-v-5aec3d9e]:hover {\n    -webkit-transform: none;\n            transform: none;\n}\n.middle[data-v-5aec3d9e] {\n    width: 85px;\n    height: 85px;\n}\n.inner[data-v-5aec3d9e] {\n    width: 70px;\n    height: 70px;\n}\n.play[data-v-5aec3d9e] {\n    width: 0;\n    height: 0;\n    border-top: 13px solid transparent;\n    border-bottom: 13px solid transparent;\n    border-left: 18px solid white;\n    margin-right: -5px;\n}\n}", ""]);
 
 // exports
 
@@ -7775,7 +7777,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".channel-row-wrapper[data-v-a8665c64] {\n  margin-bottom: 10px;\n}\n.collapse[data-v-a8665c64] {\n  overflow: hidden;\n  height: 12.5vw;\n}\n.see-more[data-v-a8665c64] {\n  text-align: center;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.see-more span[data-v-a8665c64] {\n  display: inline-block;\n  font-size: 1.1rem;\n  cursor: pointer;\n  margin-right: 8px;\n  color: #d60000;\n  font-family: \"Dubai-Regular\", sans-serif;\n  /*&:hover {*/\n  /*  color: red;*/\n  /*}*/\n}\n.title[data-v-a8665c64] {\n  display: inline-block;\n  font-size: 2.1rem;\n  font-weight: bold;\n  margin-bottom: 10px;\n}\n.channel-row[data-v-a8665c64] {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n@media screen and (max-width: 700px) {\n.collapse[data-v-a8665c64] {\n    overflow: hidden;\n    height: 28vw;\n}\n}", ""]);
+exports.push([module.i, ".channel-row-wrapper[data-v-a8665c64] {\n  margin-bottom: 10px;\n}\n.collapse[data-v-a8665c64] {\n  overflow: hidden;\n  height: 12.5vw;\n}\n.see-more[data-v-a8665c64] {\n  text-align: center;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.see-more span[data-v-a8665c64] {\n  display: inline-block;\n  font-size: 1.1rem;\n  cursor: pointer;\n  margin-right: 8px;\n  color: #a80707;\n  font-family: \"Dubai-Regular\", sans-serif;\n  /*&:hover {*/\n  /*  color: red;*/\n  /*}*/\n}\n.title[data-v-a8665c64] {\n  display: inline-block;\n  font-size: 2.1rem;\n  font-weight: bold;\n  margin-bottom: 10px;\n}\n.channel-row[data-v-a8665c64] {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n@media screen and (max-width: 700px) {\n.collapse[data-v-a8665c64] {\n    overflow: hidden;\n    height: 28vw;\n}\n}", ""]);
 
 // exports
 
@@ -7870,7 +7872,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-b3c5cf30] {\n  padding: 50px;\n}\n.fade-enter-active[data-v-b3c5cf30], .fade-leave-active[data-v-b3c5cf30] {\n  -webkit-transition: opacity 0.5s;\n  transition: opacity 0.5s;\n}\n.fade-enter[data-v-b3c5cf30], .fade-leave-to[data-v-b3c5cf30] {\n  opacity: 0;\n}\n.survey-container[data-v-b3c5cf30] {\n  text-align: center;\n}\n.survey-container .survey[data-v-b3c5cf30] {\n  margin-bottom: 10px;\n}\n.vote-container[data-v-b3c5cf30] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n  margin-bottom: 50px;\n}\n.vote-container .team-container[data-v-b3c5cf30] {\n  text-align: center;\n  width: 80px;\n  font-family: \"Dubai-Light\", sans-serif;\n  font-size: 0.8rem;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  /*justify-content: center;*/\n  -webkit-box-align: center;\n          align-items: center;\n  cursor: pointer;\n}\n.vote-container .team[data-v-b3c5cf30] {\n  background: #d60000;\n  /*box-shadow: 0 0 0 2px #d60000;*/\n  width: 25px;\n  height: 5px;\n  /*height: 25px;*/\n  border-radius: 5px;\n  margin-bottom: 5px;\n}\n.highlighted[data-v-b3c5cf30] {\n  color: #edb329;\n}\n.highlightedTeam[data-v-b3c5cf30] {\n  background: #edb329 !important;\n}\n@media screen and (max-width: 700px) {\n.wrapper[data-v-b3c5cf30] {\n    padding: 10px;\n}\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-b3c5cf30] {\n  padding: 50px;\n}\n.fade-enter-active[data-v-b3c5cf30], .fade-leave-active[data-v-b3c5cf30] {\n  -webkit-transition: opacity 0.5s;\n  transition: opacity 0.5s;\n}\n.fade-enter[data-v-b3c5cf30], .fade-leave-to[data-v-b3c5cf30] {\n  opacity: 0;\n}\n.survey-container[data-v-b3c5cf30] {\n  text-align: center;\n}\n.survey-container .survey[data-v-b3c5cf30] {\n  margin-bottom: 10px;\n}\n.vote-container[data-v-b3c5cf30] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n  margin-bottom: 50px;\n}\n.vote-container .team-container[data-v-b3c5cf30] {\n  text-align: center;\n  width: 80px;\n  font-family: \"Dubai-Light\", sans-serif;\n  font-size: 0.8rem;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  /*justify-content: center;*/\n  -webkit-box-align: center;\n          align-items: center;\n  cursor: pointer;\n}\n.vote-container .team[data-v-b3c5cf30] {\n  background: #a80707;\n  /*box-shadow: 0 0 0 2px #d60000;*/\n  width: 25px;\n  height: 5px;\n  /*height: 25px;*/\n  border-radius: 5px;\n  margin-bottom: 5px;\n}\n.highlighted[data-v-b3c5cf30] {\n  color: #edb329;\n}\n.highlightedTeam[data-v-b3c5cf30] {\n  background: #edb329 !important;\n}\n@media screen and (max-width: 700px) {\n.wrapper[data-v-b3c5cf30] {\n    padding: 10px;\n}\n}", ""]);
 
 // exports
 
@@ -8003,7 +8005,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".left-col .title[data-v-09dfb921] {\n  border-bottom: 1px solid #555;\n  min-height: 30px;\n  text-align: center;\n}\nul[data-v-09dfb921] {\n  list-style: none;\n}\nul.channels li.channel[data-v-09dfb921] {\n  text-align: center;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  border-bottom: 1px solid #555;\n  min-height: 80px;\n}\nul.channels li.channel .container-img[data-v-09dfb921] {\n  float: left;\n  min-width: 190px;\n}\nul.channels li.channel .container-img > img[data-v-09dfb921] {\n  max-height: 40px !important;\n  max-width: 70% !important;\n}\nul.channels li.channel span[data-v-09dfb921] {\n  min-width: 60px;\n}\nul.channels li.channel img[data-v-09dfb921] {\n  height: auto;\n}\n.guide-container[data-v-09dfb921] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 20px;\n}\n.guide-container .left-col[data-v-09dfb921] {\n  overflow: hidden;\n  min-width: 250px;\n}\n.guide-container .right-col[data-v-09dfb921] {\n  position: relative;\n  overflow: auto;\n}\n.guide-container .right-col .before-gradient[data-v-09dfb921] {\n  position: fixed;\n  left: 0;\n  bottom: 0;\n  top: 0;\n  background: -webkit-gradient(linear, left top, right top, from(#03090f), to(transparent));\n  background: linear-gradient(90deg, #03090f, transparent);\n  width: 100px;\n  height: 100%;\n}\n.guide-container .right-col .after-gradient[data-v-09dfb921] {\n  position: fixed;\n  background: -webkit-gradient(linear, left top, right top, from(transparent), to(#03090f));\n  background: linear-gradient(90deg, transparent, #03090f);\n  width: 100px;\n  height: 100%;\n  right: 0;\n}\n.timeline[data-v-09dfb921] {\n  display: -webkit-box;\n  display: flex;\n}\n.timeline .timeline-item[data-v-09dfb921] {\n  width: 144px;\n  min-width: 144px;\n  min-height: 30px;\n  border-right: 1px solid #555;\n  border-bottom: 1px solid #555;\n  padding-left: 10px;\n}\n.program-row[data-v-09dfb921] {\n  display: -webkit-box;\n  display: flex;\n}\n.program-row .program[data-v-09dfb921] {\n  border: 1px solid #555;\n  min-height: 80px;\n  height: 80px;\n  overflow: hidden;\n  text-align: center;\n  line-height: 80px;\n}\n.load-more[data-v-09dfb921] {\n  position: absolute;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  font-size: 1rem;\n  cursor: pointer;\n}\n.load-more[data-v-09dfb921]:hover {\n  background: #d60000;\n}\n.now[data-v-09dfb921] {\n  position: absolute;\n  width: 2px;\n  height: 100%;\n  background: #d60000;\n}\n.fade[data-v-09dfb921] {\n  position: absolute;\n  right: 0;\n  width: 100px;\n  height: 100%;\n  background: black;\n}", ""]);
+exports.push([module.i, ".left-col .title[data-v-09dfb921] {\n  border-bottom: 1px solid #555;\n  min-height: 30px;\n  text-align: center;\n}\nul[data-v-09dfb921] {\n  list-style: none;\n}\nul.channels li.channel[data-v-09dfb921] {\n  text-align: center;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  border-bottom: 1px solid #555;\n  min-height: 80px;\n}\nul.channels li.channel .container-img[data-v-09dfb921] {\n  float: left;\n  min-width: 190px;\n}\nul.channels li.channel .container-img > img[data-v-09dfb921] {\n  max-height: 40px !important;\n  max-width: 70% !important;\n}\nul.channels li.channel span[data-v-09dfb921] {\n  min-width: 60px;\n}\nul.channels li.channel img[data-v-09dfb921] {\n  height: auto;\n}\n.guide-container[data-v-09dfb921] {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 20px;\n}\n.guide-container .left-col[data-v-09dfb921] {\n  overflow: hidden;\n  min-width: 250px;\n}\n.guide-container .right-col[data-v-09dfb921] {\n  position: relative;\n  overflow: auto;\n}\n.guide-container .right-col .before-gradient[data-v-09dfb921] {\n  position: fixed;\n  left: 0;\n  bottom: 0;\n  top: 0;\n  background: -webkit-gradient(linear, left top, right top, from(#03090f), to(transparent));\n  background: linear-gradient(90deg, #03090f, transparent);\n  width: 100px;\n  height: 100%;\n}\n.guide-container .right-col .after-gradient[data-v-09dfb921] {\n  position: fixed;\n  background: -webkit-gradient(linear, left top, right top, from(transparent), to(#03090f));\n  background: linear-gradient(90deg, transparent, #03090f);\n  width: 100px;\n  height: 100%;\n  right: 0;\n}\n.timeline[data-v-09dfb921] {\n  display: -webkit-box;\n  display: flex;\n}\n.timeline .timeline-item[data-v-09dfb921] {\n  width: 144px;\n  min-width: 144px;\n  min-height: 30px;\n  border-right: 1px solid #555;\n  border-bottom: 1px solid #555;\n  padding-left: 10px;\n}\n.program-row[data-v-09dfb921] {\n  display: -webkit-box;\n  display: flex;\n}\n.program-row .program[data-v-09dfb921] {\n  border: 1px solid #555;\n  min-height: 80px;\n  height: 80px;\n  overflow: hidden;\n  text-align: center;\n  line-height: 80px;\n}\n.load-more[data-v-09dfb921] {\n  position: absolute;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  font-size: 1rem;\n  cursor: pointer;\n}\n.load-more[data-v-09dfb921]:hover {\n  background: #a80707;\n}\n.now[data-v-09dfb921] {\n  position: absolute;\n  width: 2px;\n  height: 100%;\n  background: #a80707;\n}\n.fade[data-v-09dfb921] {\n  position: absolute;\n  right: 0;\n  width: 100px;\n  height: 100%;\n  background: black;\n}", ""]);
 
 // exports
 
@@ -8022,7 +8024,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "@media screen and (max-width: 700px) {\n.button.downloads[data-v-91ac6b5c] {\n    display: none;\n}\n.button.schedule[data-v-91ac6b5c] {\n    display: none;\n}\n}", ""]);
+exports.push([module.i, ".expanded[data-v-91ac6b5c] {\n  -webkit-box-flex: 1;\n          flex: 1;\n}\n.tabs[data-v-91ac6b5c] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  margin-left: 20px;\n  cursor: pointer;\n  font-family: \"Dubai-Light\", sans-serif;\n}\n.tabs .tab[data-v-91ac6b5c] {\n  margin: 10px;\n  padding: 2px;\n}\n.tabs .highlighted[data-v-91ac6b5c] {\n  font-family: \"Dubai-Regular\", sans-serif;\n  border-bottom: 1px solid red;\n}\n@media screen and (max-width: 700px) {\n.button.downloads[data-v-91ac6b5c] {\n    display: none;\n}\n.button.schedule[data-v-91ac6b5c] {\n    display: none;\n}\n}", ""]);
 
 // exports
 
@@ -8041,7 +8043,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.down-arrow[data-v-1719032c] {\n  fill: #d60000;\n  /*margin-top: 5px;*/\n}\n.down-arrow img[data-v-1719032c] {\n  width: 13px;\n}\n", ""]);
+exports.push([module.i, "\n.down-arrow[data-v-1719032c] {\n  fill: #a80707;\n  /*margin-top: 5px;*/\n}\n.down-arrow img[data-v-1719032c] {\n  width: 13px;\n}\n", ""]);
 
 // exports
 
@@ -103773,7 +103775,9 @@ var render = function() {
         _c("div", { staticClass: "article-summary" }, [
           _vm._v(_vm._s(_vm.article["summary"]))
         ]),
-        _c("div", { staticClass: "article-date" }, [_vm._v(_vm._s(_vm.date))])
+        _c("div", { staticClass: "article-date", attrs: { dir: "ltr" } }, [
+          _vm._v(_vm._s(_vm.date))
+        ])
       ])
     ])
   ])
@@ -103835,10 +103839,7 @@ var render = function() {
     _vm.channels
       ? _c(
           "div",
-          {
-            staticClass: "channel-row",
-            class: _vm.collapsed ? "collapse" : ""
-          },
+          { staticClass: "channel-row" },
           _vm._l(_vm.data, function(channel) {
             return _c("channel-card", {
               key: channel.id,
@@ -103847,32 +103848,7 @@ var render = function() {
           }),
           1
         )
-      : _vm._e(),
-    _c(
-      "div",
-      {
-        staticClass: "see-more",
-        attrs: { dir: _vm.locale === "_ar" ? "rtl" : "ltr" },
-        on: { click: _vm.collapse }
-      },
-      [
-        _c("span", [
-          _vm._v(
-            _vm._s(
-              _vm.collapsed
-                ? _vm.locale === "_ar"
-                  ? "المزيد"
-                  : "SEE MORE"
-                : _vm.locale === "_ar"
-                ? "اقل"
-                : "SEE LESS"
-            )
-          )
-        ]),
-        _c("down-arrow", { attrs: { down: !_vm.collapsed } })
-      ],
-      1
-    )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -103943,8 +103919,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("footer", [
-      _vm._v("Copyright © 2019\n"),
-      _c("span", [_vm._v("1001 Nights")]),
+      _vm._v("Copyright © 2020\n"),
+      _c("span", [_vm._v("Shashety")]),
       _vm._v("\nAll rights reserved.")
     ])
   }
@@ -103975,67 +103951,6 @@ var render = function() {
         _c("div", { staticClass: "bottom-gradient" }),
         _c(
           "div",
-          { staticClass: "tabs" },
-          [
-            _c("router-link", { attrs: { to: "/home/live-tv" } }, [
-              _c(
-                "div",
-                {
-                  staticClass: "tab live-tv",
-                  class: { highlighted: _vm.isHighlighted === "live-tv" }
-                },
-                [_vm._v(_vm._s(_vm.locale === "_ar" ? "التلفاز" : "LiveTV"))]
-              )
-            ]),
-            _c("router-link", { attrs: { to: "/home/schedule" } }, [
-              _c(
-                "div",
-                {
-                  staticClass: "tab live-tv",
-                  class: { highlighted: _vm.isHighlighted === "schedule" }
-                },
-                [_vm._v(_vm._s(_vm.locale === "_ar" ? "الجدول" : "Schedule"))]
-              )
-            ]),
-            _c("router-link", { attrs: { to: "/home/tv-guide" } }, [
-              _c(
-                "div",
-                {
-                  staticClass: "tab tv-guide",
-                  class: { highlighted: _vm.isHighlighted === "tv-guide" }
-                },
-                [_vm._v(_vm._s(_vm.locale === "_ar" ? "الدليل" : "Guide"))]
-              )
-            ]),
-            _c("router-link", { attrs: { to: "/home/news" } }, [
-              _c(
-                "div",
-                {
-                  staticClass: "tab tv-guide",
-                  class: { highlighted: _vm.isHighlighted.includes("news") }
-                },
-                [_vm._v(_vm._s(_vm.locale === "_ar" ? "الاخبار" : "News"))]
-              )
-            ]),
-            _c("router-link", { attrs: { to: "/home/downloads" } }, [
-              _c(
-                "div",
-                {
-                  staticClass: "tab downloads",
-                  class: { highlighted: _vm.isHighlighted === "downloads" }
-                },
-                [
-                  _vm._v(
-                    _vm._s(_vm.locale === "_ar" ? "التحميلات" : "Downloads")
-                  )
-                ]
-              )
-            ])
-          ],
-          1
-        ),
-        _c(
-          "div",
           { staticClass: "watch-now" },
           [
             _c("img", {
@@ -104055,9 +103970,8 @@ var render = function() {
               [
                 _vm._v(
                   _vm._s(
-                    _vm.countDown || _vm.locale === "_ar"
-                      ? "شاهد الان"
-                      : "Watch Now"
+                    _vm.countDown ||
+                      (_vm.locale === "_ar" ? "شاهد الان" : "Watch Now")
                   )
                 )
               ]
@@ -104101,21 +104015,7 @@ var render = function() {
           _vm._v(_vm._s(_vm.match.homeCompetitor.name))
         ])
       ]),
-      _c("div", { staticClass: "game" }, [
-        _c("img", { staticClass: "logo", attrs: { src: _vm.awayImg } }),
-        _c("div", { staticClass: "title" }, [
-          _vm._v(_vm._s(_vm.match.awayCompetitor.name))
-        ])
-      ])
-    ]),
-    _c("div", { staticClass: "game-info" }, [
-      _c("div", { staticClass: "time" }, [_vm._v(_vm._s(_vm.time))]),
-      _c("div", { staticClass: "stadium" }, [
-        _vm._v(_vm._s(_vm.match.statusText))
-      ])
-    ]),
-    _c("div", { staticClass: "games font-dubai-bold" }, [
-      _c("div", { staticClass: "game" }, [
+      _c("div", { staticClass: "game font-dubai-bold" }, [
         _c("div", { staticClass: "title" }, [
           _vm._v(
             _vm._s(
@@ -104125,8 +104025,22 @@ var render = function() {
             )
           )
         ])
-      ]),
+      ])
+    ]),
+    _c("div", { staticClass: "game-info" }, [
+      _c("div", { staticClass: "time" }, [_vm._v(_vm._s(_vm.time))]),
+      _c("div", { staticClass: "stadium" }, [
+        _vm._v(_vm._s(_vm.match.statusText))
+      ])
+    ]),
+    _c("div", { staticClass: "games" }, [
       _c("div", { staticClass: "game" }, [
+        _c("img", { staticClass: "logo", attrs: { src: _vm.awayImg } }),
+        _c("div", { staticClass: "title" }, [
+          _vm._v(_vm._s(_vm.match.awayCompetitor.name))
+        ])
+      ]),
+      _c("div", { staticClass: "game font-dubai-bold" }, [
         _c("div", { staticClass: "title" }, [
           _vm._v(
             _vm._s(
@@ -104874,7 +104788,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.articles
+  return _vm.articles.length !== 0
     ? _c(
         "div",
         { staticClass: "news-wrapper", attrs: { dir: "rtl" } },
@@ -105166,65 +105080,86 @@ var render = function() {
                     },
                     [_c("img", { attrs: { src: "/images/logo.png" } })]
                   ),
-                  _c("div", { staticClass: "expanded" }),
                   _c(
                     "div",
-                    { staticClass: "left" },
+                    { staticClass: "tabs" },
                     [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "button downloads",
-                          attrs: { to: "/home/downloads" }
-                        },
-                        [
-                          _vm._v(
-                            _vm._s(
-                              _vm.locale === "_ar" ? "التحميلات" : "Downloads"
+                      _c("router-link", { attrs: { to: "/home/live-tv" } }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "tab live-tv",
+                            class: {
+                              highlighted:
+                                _vm.isHighlighted === "live-tv" ||
+                                _vm.isHighlighted === "player"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                _vm.locale === "_ar" ? "التلفاز" : "LiveTV"
+                              )
                             )
-                          )
-                        ]
-                      ),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "button schedule",
-                          attrs: { to: "/home/schedule" }
-                        },
-                        [
-                          _vm._v(
-                            _vm._s(_vm.locale === "_ar" ? "الجدول" : "Schedule")
-                          )
-                        ]
-                      ),
-                      _c(
-                        "a",
-                        {
-                          class: { highlighted: _vm.locale === "" },
-                          on: {
-                            click: function($event) {
-                              return _vm.changeLocale("")
+                          ]
+                        )
+                      ]),
+                      _c("router-link", { attrs: { to: "/home/schedule" } }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "tab live-tv",
+                            class: {
+                              highlighted: _vm.isHighlighted === "schedule"
                             }
-                          }
-                        },
-                        [_vm._v("English")]
-                      ),
-                      _c("div", { staticClass: "divider" }),
-                      _c(
-                        "a",
-                        {
-                          class: { highlighted: _vm.locale === "_ar" },
-                          on: {
-                            click: function($event) {
-                              return _vm.changeLocale("_ar")
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                _vm.locale === "_ar" ? "الجدول" : "Schedule"
+                              )
+                            )
+                          ]
+                        )
+                      ]),
+                      _c("router-link", { attrs: { to: "/home/news" } }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "tab tv-guide",
+                            class: {
+                              highlighted: _vm.isHighlighted.includes("news")
                             }
-                          }
-                        },
-                        [_vm._v("العربية")]
-                      )
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(_vm.locale === "_ar" ? "الاخبار" : "News")
+                            )
+                          ]
+                        )
+                      ])
                     ],
                     1
-                  )
+                  ),
+                  _c("div", { staticClass: "expanded" }),
+                  _c("div", { staticClass: "left" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "highlighted",
+                        on: {
+                          click: function($event) {
+                            return _vm.changeLocale()
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(_vm.locale === "" ? "العربية" : "English")
+                        )
+                      ]
+                    )
+                  ])
                 ],
                 1
               ),
@@ -121705,7 +121640,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_utils_request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/utils/request */ "./resources/js/utils/request.js");
 
 function getArticles(nextPageToken) {
-  var url = 'http://tv.sawadland.com:8999/https://api.skynewsarabia.com/rest/v2/latest.json?defaultSectionId=6&pageSize=20&types=ARTICLE';
+  var url = 'http://localhost:8080/https://api.skynewsarabia.com/rest/v2/latest.json?defaultSectionId=6&pageSize=20&types=ARTICLE';
 
   if (nextPageToken) {
     url = "".concat(url, "&nextPageToken=").concat(nextPageToken);
@@ -121718,7 +121653,7 @@ function getArticles(nextPageToken) {
 }
 function getArticle(id) {
   return Object(_js_utils_request__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    url: "http://tv.sawadland.com:8999/https://api.skynewsarabia.com/rest/v2/article/".concat(id, ".json?client=web&deviceType=MOBILE"),
+    url: "http://localhost:8080/https://api.skynewsarabia.com/rest/v2/article/".concat(id, ".json?client=web&deviceType=MOBILE"),
     method: 'get'
   });
 }
@@ -124208,8 +124143,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: "history",
   routes: [{
     path: "/",
-    name: "landing",
-    component: _pages_Landing__WEBPACK_IMPORTED_MODULE_3__["default"]
+    redirect: '/home/live-tv'
   }, {
     path: '/kids-tv',
     name: 'kids-tv',
@@ -124475,8 +124409,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/mohammedsalman/code/laravel/nights_tv/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/mohammedsalman/code/laravel/nights_tv/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/mohammedsalman/code/laravel/shashety_tv/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/mohammedsalman/code/laravel/shashety_tv/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

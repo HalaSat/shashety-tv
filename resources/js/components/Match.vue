@@ -1,20 +1,22 @@
 <template lang="pug">
   .match
+
     .games
       .game
         img.logo(:src="homeImg")
         .title {{ match.homeCompetitor.name }}
-      .game
-        img.logo(:src="awayImg")
-        .title {{ match.awayCompetitor.name }}
+      .game.font-dubai-bold
+        .title {{ match.homeCompetitor.score >= 0 ? match.homeCompetitor.score : '--' }}
 
     .game-info
       .time {{ time }}
       .stadium {{ match.statusText }}
-    .games.font-dubai-bold
+
+    .games
       .game
-        .title {{ match.homeCompetitor.score >= 0 ? match.homeCompetitor.score : '--' }}
-      .game
+        img.logo(:src="awayImg")
+        .title {{ match.awayCompetitor.name }}
+      .game.font-dubai-bold
         .title {{ match.awayCompetitor.score >= 0 ? match.awayCompetitor.score : '--' }}
 </template>
 
@@ -51,6 +53,7 @@ export default {
   justify-content: space-between;
   max-width: 500px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .game-info {
@@ -64,7 +67,15 @@ export default {
     font-family: "Dubai-Light", sans-serif;
   }
 
-  // margin: 0 60px;
+}
+
+.games  {
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  align-items: center;
+  min-width: 200px;
+  max-width: 200px;
 }
 
 .games .game {

@@ -20,7 +20,7 @@
 
 <style scoped>
   .down-arrow {
-    fill: #d60000;
+    fill: #a80707;
     /*margin-top: 5px;*/
   }
 

@@ -54,7 +54,7 @@
     font-size: 1.1rem;
     cursor: pointer;
     margin-right: 8px;
-    color: #d60000;
+    color: #a80707;
     font-family: "Dubai-Regular", sans-serif;
 
     /*&:hover {*/

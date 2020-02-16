@@ -29,7 +29,7 @@
     height: 12.3vw;
     width: 12.3vw;
     object-fit: cover;
-    /*border-radius: 10px;*/
+    border-radius: 20px;
     /*border: 1px solid silver;*/
     transition: .3s;
 

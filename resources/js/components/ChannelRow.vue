@@ -1,11 +1,9 @@
 <template lang="pug">
   .channel-row-wrapper
     .title {{ category['name' + locale] }}
-    .channel-row(:class="collapsed ? 'collapse' : ''" v-if="channels")
+    .channel-row(v-if="channels")
       channel-card(v-for="channel in data" :channel="channel" :key="channel.id")
-    .see-more(:dir="locale === '_ar' ? 'rtl' : 'ltr'" v-on:click="collapse")
-      span {{ collapsed ? locale === '_ar' ? 'المزيد'  : 'SEE MORE' : locale === '_ar' ? 'اقل' : 'SEE LESS' }}
-      down-arrow(:down="!collapsed")
+
 
 </template>
 

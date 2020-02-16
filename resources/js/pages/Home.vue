@@ -127,7 +127,7 @@
     }
 
     .team {
-      background: #d60000;
+      background: #a80707;
       /*box-shadow: 0 0 0 2px #d60000;*/
       width: 25px;
       height: 5px;

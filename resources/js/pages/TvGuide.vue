@@ -229,7 +229,7 @@
     cursor: pointer;
 
     &:hover {
-      background: #d60000;
+      background: #a80707;
     }
   }
 
@@ -237,7 +237,7 @@
     position: absolute;
     width: 2px;
     height: 100%;
-    background: #d60000;
+    background: #a80707;
   }
 
   .fade {

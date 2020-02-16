@@ -1,18 +1,6 @@
 <template lang="pug">
   .featured(v-if="homePromo" :style="style")
     .bottom-gradient
-    .tabs
-      router-link(to="/home/live-tv")
-        .tab.live-tv(:class="{highlighted: isHighlighted === 'live-tv'}") {{ locale === '_ar' ? 'التلفاز' : 'LiveTV'}}
-      router-link(to="/home/schedule")
-        .tab.live-tv(:class="{highlighted: isHighlighted === 'schedule'}") {{ locale === '_ar' ? 'الجدول' : 'Schedule'}}
-      router-link(to="/home/tv-guide")
-        .tab.tv-guide(:class="{highlighted: isHighlighted === 'tv-guide'}") {{ locale === '_ar' ? 'الدليل' : 'Guide'}}
-      router-link(to="/home/news")
-        .tab.tv-guide(:class="{highlighted: isHighlighted.includes('news')}") {{ locale === '_ar' ? 'الاخبار' : 'News'}}
-      router-link(to="/home/downloads")
-        .tab.downloads(:class="{highlighted: isHighlighted === 'downloads'}") {{ locale === '_ar' ? 'التحميلات' : 'Downloads'}}
-
     .watch-now
       img.channel-logo(:src="channelLogoPath" width="200px" height="100px")
       router-link.button.channel-button(:to="channelPath") {{ countDown || (locale === '_ar' ? 'شاهد الان' : 'Watch Now') }}
@@ -29,7 +17,7 @@
     name: "home-featured",
     data() {
       return {
-        isHighlighted: 0,
+        isHighlighted: 'live-tv',
         homePromo: null,
         countDown: null
       }
@@ -56,7 +44,6 @@
         let countDownDateString
         try {
           const data = await getGameDate()
-          console.log(data)
           countDownDateString = data.game_date.date
         } catch (e) {
           countDownDateString = null
@@ -130,7 +117,7 @@
     text-decoration: none;
     color: white;
     padding: 10px 35px;
-    box-shadow: 0 0 0 2px #d60000;
+    box-shadow: 0 0 0 2px #a80707;
     border-radius: 40px;
     transition: 0.2s;
     text-align: center;
@@ -139,12 +126,12 @@
 
   .button:hover {
     background: rgba(201, 201, 201, 0.219);
-    box-shadow: 0 0 0 3px #d60000;
+    box-shadow: 0 0 0 3px #a80707;
   }
 
   .button.channel-button {
     &:hover {
-      background: #d60000;
+      background: #a80707;
     }
   }
 
@@ -164,28 +151,6 @@
     padding: 50px;
     width: 15vw;
   }
-
-  .tabs {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    left: 50%;
-    bottom: 50px;
-    transform: translate(-50%, 0);
-    cursor: pointer;
-    font-family: "Dubai-Light", sans-serif;
-
-    .tab {
-      margin: 10px;
-      padding: 2px;
-    }
-
-    .highlighted {
-      font-family: "Dubai-Regular", sans-serif;
-      border-bottom: 1px solid red;
-    }
-  }
-
 
   .watch-now {
     position: absolute;

@@ -21,13 +21,13 @@ class ScheduleController extends Controller
       $client = new Client();
       $res = $client->request(
         'GET',
-        "http://tv.sawadland.com:8999/https://webws.365scores.com/web/games/?langId=1&timezoneName=Asia/Baghdad&userCountryId=-1&appTypeId=5&sports=1&startDate=$date&endDate=$date",
+        "http://localhost:8080/https://webws.365scores.com/web/games/?langId=1&timezoneName=Asia/Baghdad&userCountryId=-1&appTypeId=5&sports=1&startDate=$date&endDate=$date",
         ['headers' => ['origin' => 'http://' . $request->getHost()]]
       );
 
       $resAr = $client->request(
         'GET',
-        "http://tv.sawadland.com:8999/https://webws.365scores.com/web/games/?langId=27&timezoneName=Asia/Baghdad&userCountryId=-1&appTypeId=5&sports=1&startDate=$date&endDate=$date",
+        "http://localhost:8080/https://webws.365scores.com/web/games/?langId=27&timezoneName=Asia/Baghdad&userCountryId=-1&appTypeId=5&sports=1&startDate=$date&endDate=$date",
         ['headers' => ['origin' => 'http://' . $request->getHost()]]
       );
 

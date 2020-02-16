@@ -12,7 +12,7 @@
 
   <script src="{{ asset('/js/clappr.min.js') }}"></script>
 
-  <title>1001 Nights TV</title>
+  <title>Shashety TV</title>
 </head>
 <body>
 <div id="app"></div>

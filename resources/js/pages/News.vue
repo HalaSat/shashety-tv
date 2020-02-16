@@ -1,5 +1,5 @@
 <template lang="pug">
-  .news-wrapper(v-if="articles" dir="rtl")
+  .news-wrapper(v-if="articles.length !== 0" dir="rtl")
     article-item(:key="article.id" v-for="article in articles" :article="article")
   loading-indicator(v-else)
 

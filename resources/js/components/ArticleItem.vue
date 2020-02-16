@@ -5,8 +5,7 @@
       .text-container
         .article-headline {{ article["headline"] }}
         .article-summary {{ article["summary"] }}
-        .article-date {{ date }}
-
+        .article-date(dir="ltr") {{ date }}
 </template>
 
 <script>
@@ -35,18 +34,21 @@
 
 <style lang="scss" scoped>
   .article-item {
+    border-radius: 20px;
     display: flex;
     margin: 1rem;
+    padding-left: 10px;
 
     transition: .2s;
 
     &:hover {
-      background: #ffffff33;
+      background: #dddddd22;
     }
   }
 
   .article-item img {
-    max-width: 300px;
+    border-radius: 20px;
+    min-width: 300px;
     margin-left: .5rem;
     object-fit: cover;
   }

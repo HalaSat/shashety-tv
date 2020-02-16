@@ -1,8 +1,8 @@
 <template lang="pug">
-  footer Copyright © 2019
+  footer Copyright © 2020
     |
     |
-    span 1001 Nights
+    span Shashety
     |
     | All rights reserved.
 </template>
@@ -15,12 +15,12 @@
 
 <style lang="scss" scoped>
   footer {
-    background: #2e2d2e;
-    border-bottom: 5px solid #d60000;
+    /*background: #111;*/
+    /*border-bottom: 2px solid #a80707;*/
     text-align: center;
     padding: 10px;
     span {
-      color: #d60000;
+      color: #a80707;
     }
   }
 </style>

@@ -3914,7 +3914,7 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     style: function style() {
       var promo_image = this.homePromo.promo_image;
-      return "\n          position: relative;\n          height: 527px;\n          background: url(\"".concat(promo_image, "\") center;\n          background-size: cover;\n      ");
+      return "\n          position: relative;\n          height: 300px;\n          background: url(\"".concat(promo_image, "\") center;\n          background-size: cover;\n      ");
     },
     channelPath: function channelPath() {
       var channel_id = this.homePromo.channel_id;
@@ -121640,7 +121640,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_utils_request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/utils/request */ "./resources/js/utils/request.js");
 
 function getArticles(nextPageToken) {
-  var url = 'http://localhost:8080/https://api.skynewsarabia.com/rest/v2/latest.json?defaultSectionId=6&pageSize=20&types=ARTICLE';
+  var url = 'http://tv.shashety.com:8080/https://api.skynewsarabia.com/rest/v2/latest.json?defaultSectionId=6&pageSize=20&types=ARTICLE';
 
   if (nextPageToken) {
     url = "".concat(url, "&nextPageToken=").concat(nextPageToken);
@@ -121653,7 +121653,7 @@ function getArticles(nextPageToken) {
 }
 function getArticle(id) {
   return Object(_js_utils_request__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    url: "http://localhost:8080/https://api.skynewsarabia.com/rest/v2/article/".concat(id, ".json?client=web&deviceType=MOBILE"),
+    url: "http://tv.shashety.com:8080/https://api.skynewsarabia.com/rest/v2/article/".concat(id, ".json?client=web&deviceType=MOBILE"),
     method: 'get'
   });
 }

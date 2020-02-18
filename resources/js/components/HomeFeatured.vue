@@ -92,7 +92,7 @@
         const {promo_image} = this.homePromo
         return `
             position: relative;
-            height: 527px;
+            height: 300px;
             background: url("${promo_image}") center;
             background-size: cover;
         `
